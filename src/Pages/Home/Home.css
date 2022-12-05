@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+.home-header-text {
+/* inline-size: 100%; */
+}
+/*  */
+
+/* .home-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     border: 1px so;
+}
+
+.home-container p {
+     font-family: Roboto;
+     text-align: center;
+     width: 50%;
+}
+
+@media screen and (max-width: 1300px) {
+     .home-container p {
+          font-family: Roboto;
+          text-align: center;
+          width: 90%;
+     }
+} */
