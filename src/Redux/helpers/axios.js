@@ -3,7 +3,8 @@ import { API } from './urlConfig'
 import store from '../store'
 import {
   authConstants,
-  getCategoryConstants
+  getCategoryConstants,
+  userSignUpConstants
 } from '../actions/constants/constants'
 
 const token = localStorage.getItem('token')
@@ -24,7 +25,11 @@ axioInstance.interceptors.response.use(
     return res
   },
   error => {
-    switch (error.response.data.message || error.response.data.error.message) {
+    switch (
+      error.response.data.message ||
+      error.response.data.error ||
+      error.response.data.error.message
+    ) {
       case 'Wrong username or password':
         store.dispatch({
           type: authConstants.LOGIN_FAILURE,
@@ -52,7 +57,25 @@ axioInstance.interceptors.response.use(
         })
         alert("Couldn't find user")
         break
-      case '':
+      case 'Email or username already exists':
+        console.log({ error, message: 'shit' })
+        store.dispatch({
+          type: userSignUpConstants.USER_SIGNUP_FAILURE,
+          payload: { error: error.response.data.message }
+        })
+        alert('Email or username already exists')
+        break
+      
+      case 'password is should be more than 6 characters':
+        console.log({ error })
+        store.dispatch({
+          type: userSignUpConstants.USER_SIGNUP_FAILURE,
+          payload: { error: error.response.data.error }
+        })
+        alert('Password is should be more than 6 characters')
+        break
+
+      case 'jwt expired':
         store.dispatch({ type: authConstants.LOGOUT_SUCCESS })
         alert('Session expired, please login again to renew session')
         localStorage.clear()

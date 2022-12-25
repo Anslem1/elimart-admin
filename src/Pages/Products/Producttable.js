@@ -127,7 +127,6 @@ function Producttable () {
                       <td className='table-price'>
                         {numberWithCommas(product.price)}
                       </td>
-                      {/* <td>{product.description}</td> */}
                       <td>{product.quantity}</td>
                       <td>{product.category.name}</td>
                       <td>

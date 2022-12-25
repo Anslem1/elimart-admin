@@ -27,7 +27,7 @@ function UpdateCategoryModal (props) {
         style={style}
         ariaHideApp={ariaHideApp}
       >
-        <></>
+        
         <h1
           style={{
             textAlign: 'center',

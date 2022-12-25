@@ -93,6 +93,7 @@ function Signup () {
                 placeholder='Password'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                min='6'
                 required
               />
               <button className='signup_btn'>Sign up</button>
